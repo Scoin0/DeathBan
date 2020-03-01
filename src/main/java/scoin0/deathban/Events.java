@@ -1,6 +1,5 @@
 package scoin0.deathban;
 
-
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -9,6 +8,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
@@ -37,12 +37,14 @@ public class Events implements Listener {
                 player.kickPlayer(ChatColor.RED + "You are dead\n"
                 + "You can return after:\n"
                 + ChatColor.GOLD + convertMillisToTime(getTimeDifference(section.getLong(configDayUnbanned))));
+            } else {
+                removeBan(player.getUniqueId().toString());
+                player.setHealth(20);
             }
         } else {
-            removeBan(player.getUniqueId().toString());
+            config.createSection(player.getUniqueId().toString());
+            DeathBan.plugin.saveConfig();
         }
-        config.createSection(player.getUniqueId().toString());
-        DeathBan.plugin.saveConfig();
     }
 
     private void addBan(String player) {

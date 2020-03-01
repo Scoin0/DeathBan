@@ -7,7 +7,7 @@
     <name>DeathBan</name>
     <groupId>scoin0.github.io</groupId>
     <artifactId>DeathBan</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <build>
         <plugins>
