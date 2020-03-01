@@ -1,0 +1,11 @@
+name: ${project.name}
+version: ${project.version}
+main: scoin0.deathban.DeathBan
+author: Scoin0
+
+commands:
+  unban:
+    description: Unbans a player
+    permission: Deathban.unban
+    permission-message: You do not have the correct permissions to use this command.
+    usage: "Usage: /<command> <player>"
